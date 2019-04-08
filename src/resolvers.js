@@ -11,13 +11,20 @@ export const resolvers = {
             return 'Hola desde Graphql'
         },
         greet(root, { name }){
-            console.log(args.name);
+            console.log(name);
             return `Hello ${name}`;
 
         },
         tasks(){
             return tasks;
         }
-    }
-
+    },    
+      
+    Mutation: {
+            createTask(root, { input }){
+                input.id = tasks.length;
+                tasks.push(input);
+                return input;
+            }
+        }
 };

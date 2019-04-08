@@ -3,8 +3,9 @@
 import {makeExecutableSchema} from 'graphql-tools'
 import { resolvers } from './resolvers'
 
-//what to query
+//what to query / mutation forchanges
 const typeDefs = `
+    # the schema allows the following query:
     type Query {
         hello: String 
         greet(name:String!): String
@@ -19,6 +20,19 @@ const typeDefs = `
 
     }
 
+    input TaskInput{
+        name: String!
+        description: String
+        number: Int
+
+    }
+    
+    # this schema allows the following mutation:
+    type Mutation {
+        createTask (input: TaskInput): Task
+    }
+
+   
     `;
 
 
