@@ -18,7 +18,11 @@ connect();
 //route returns a tool
 app.use('/graphql', graphqlHTTP({
     graphiql: true,
-    schema: schema
+    schema: schema,
+    //para pasar data entre los resolvers
+    context: {
+
+    }
 }));
 
 
